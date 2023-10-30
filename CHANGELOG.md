@@ -1,7 +1,73 @@
-# [Latest](https://github.com/browserless/chrome/compare/v1.58.0...master)
+# [Latest](https://github.com/browserless/chrome/compare/v2.0.0...master)
 - Dependency updates.
 
-# [Latest](https://github.com/browserless/chrome/compare/v1.57.0...v1.58.0)
+# [v2.0.0](https://github.com/browserless/chrome/compare/master...feat/browserless-2.0)
+browserless 2.0.0 represents the best body of work after running browserless for over 5 years. It contains mostly the same functionality and more, and is rebuilt to be more modular and offer a NodeJS SDK. It's also much lighter and faster than prior versions and includes a lot of semantic changes.
+
+## Features
+- ECMAScript style module loading and dependencies.
+- New routing system using purely NodeJS's HTTP module.
+- Better logs and concurrency/queueing parameters.
+- Support for running the other major browser vendors in the same format and package.
+- The service now compiles TypeScript to runtime JOI validation for our routes.
+- Soon: upcoming support for extensions, long-running sessions and more.
+
+## Breaking Changes
+- Remove support for Selenium.
+- The `/function` API now runs inside the context of the browser and not in Node.
+- Drop support for keep-alive and pre-booting.
+- Support for a single `launch` query-string parameter for launching a browser versus many individual parameters.
+
+## Minor Changes
+- Many docker parameters have been renamed, but are backwards compatible. See config.ts for details.
+
+# [v1.61.0](https://github.com/browserless/chrome/compare/v1.60.2...v1.61.0)
+- **FINAL of V1 for browserless/chrome. [See notes on V2 here](https://github.com/browserless/chrome/pull/3345)**
+- Dependency updates.
+- Added `fonts-urw-base35`.
+- Supports puppeteer `1.20`, `10.4.0`, `13.1.3`, `14.4.1`, `16.2.0`, `19.7.5` and `21.4.1`.
+- Supports playwright `1.39`, `1.38`, `1.37`, `1.36`, `1.35`, `1.34`, and `1.33`.
+- Fixes an issue where keep-alive chrome instances aren't properly tracked when `browser.close` is called.
+- Fix improper handling of HTTP writing on bare sockets with 500 errors.
+
+# [v1.60.2](https://github.com/browserless/chrome/compare/v1.60.1...v1.60.2)
+- Dependency updates.
+- Fixes an issue where calls to GET /sessions sometimes return blank results.
+- Drop puppeteer `21.3.1` in favor of `21.3.6`.
+
+# [v1.60.1](https://github.com/browserless/chrome/compare/v1.60.0...v1.60.1)
+- Dependency updates.
+- Drop the `partner` repo from builds as we no longer use it for installing `flash`.
+- Bump to `Ubuntu` lunar.
+- Bump to NodeJS 18.17.0
+- Package.json `engines.node` now reflects what node version we run on the docker image.
+- Drops support for playwright@`1.33` and default playwright to `1.38`.
+- Drops support for puppeteer@`21.1.1` in favor of `21.3.1`.
+- Replaces legacy `request` module with Node's native `fetch` for webhooks.
+- Drops `node-fetch` across the board in favor of `fetch` native.
+
+# [v1.60.0](https://github.com/browserless/chrome/compare/v1.59.0...v1.60.0)
+- Dependency updates.
+- New build arguments in our Dockerfile to apply different named base repo.
+- New `CHROME_STABLE_VERSION` build arg for specifying a particular chrome stable version.
+- Fixes in postinstall hooks for various platforms and chrome-stable.
+- NEW: `waitFor` properties in our APIs now supports an object with selector + timeouts for more fine tuning.
+- Bump puppeteer `20.x.x` to `21.1.1` (116.0.5845.96).
+- Supports playwright versions `1.37`, `1.36`, `1.35`, `1.34`, and `1.33`.
+- Fixes in deploy script to handle versions, platforms and architectures.
+- Fixes an issue where headless defaults to `DEFAULT_STEALTH`.
+- New `PREBOOT_QUANTITY` for overriding the amount of pre-booted instances of Chrome.
+- Allow using a host's display by setting `DISPLAY` env variable.
+- Link fixes in README.md.
+
+# [v1.59.0](https://github.com/browserless/chrome/compare/v1.58.0...v1.59.0)
+- Dependency updates.
+- Bump to Ubuntu Kinetic release + updates to use relevant packages.
+- In support of puppeteer 20+, updates to `env.js` for finding/symlinking Chrome.
+- Supports playwright `1.33`, `1.32`, `1.31`, and `1.29.`. Drops support for earlier versions.
+- Ad-blocking and other request-interception in browserless is graceful using the `isInterceptResolutionHandled` method.
+
+# [v1.58.0](https://github.com/browserless/chrome/compare/v1.57.0...v1.58.0)
 - Dependency updates.
 - Documentation link fixes.
 - Add new required lib `libu2f-udev`.
